@@ -1,23 +1,26 @@
-``` ini
+# HashSet Contains vs Add
 
+I was trying to decide if I should refactor [LoggerMessageGenerator.Parser.cs](https://github.com/dotnet/runtime/pull/80460/files)
+to use `HashSet.Add` only instead of `HashSet.Contains`+`HashSet.Add`. This benchmark proved that using only `HashSet.Add` was more efficient.
+
+```ini
 BenchmarkDotNet=v0.13.3, OS=Windows 11 (10.0.22623.1095)
 Intel Core i7-8665U CPU 1.90GHz (Coffee Lake), 1 CPU, 8 logical and 4 physical cores
 .NET SDK=7.0.100
   [Host]     : .NET 7.0.0 (7.0.22.51805), X64 RyuJIT AVX2
   DefaultJob : .NET 7.0.0 (7.0.22.51805), X64 RyuJIT AVX2
-
-
 ```
+
 |               Method |    eventTest |       Mean |    Error |   StdDev | Ratio | RatioSD |
 |--------------------- |------------- |-----------:|---------:|---------:|------:|--------:|
-| **UsingContainsThenAdd** | **_10percEqual** | **2,166.0 ns** | **43.21 ns** | **60.58 ns** |  **1.00** |    **0.00** |
-|             UsingAdd | _10percEqual | 1,602.6 ns | 32.07 ns | 44.96 ns |  0.74 |    0.03 |
+| UsingContainsThenAdd | _10percEqual | 2,259.5 ns | 38.68 ns | 36.18 ns |  1.00 |    0.00 |
+|             UsingAdd | _10percEqual | 1,584.1 ns | 31.58 ns | 36.37 ns |  0.70 |    0.02 |
 |                      |              |            |          |          |       |         |
-| **UsingContainsThenAdd** | **_50percEqual** | **1,060.7 ns** | **20.91 ns** | **37.17 ns** |  **1.00** |    **0.00** |
-|             UsingAdd | _50percEqual |   792.2 ns | 15.55 ns | 16.63 ns |  0.74 |    0.02 |
+| UsingContainsThenAdd | _50percEqual | 1,045.1 ns | 20.18 ns | 26.94 ns |  1.00 |    0.00 |
+|             UsingAdd | _50percEqual |   806.2 ns | 15.87 ns | 21.72 ns |  0.77 |    0.03 |
 |                      |              |            |          |          |       |         |
-| **UsingContainsThenAdd** |  **allDistinct** | **2,062.3 ns** | **34.20 ns** | **31.99 ns** |  **1.00** |    **0.00** |
-|             UsingAdd |  allDistinct | 1,677.0 ns | 30.36 ns | 28.40 ns |  0.81 |    0.02 |
+| UsingContainsThenAdd |  allDistinct | 2,082.8 ns | 41.40 ns | 53.83 ns |  1.00 |    0.00 |
+|             UsingAdd |  allDistinct | 1,670.1 ns | 20.86 ns | 47.51 ns |  0.81 |    0.04 |
 |                      |              |            |          |          |       |         |
-| **UsingContainsThenAdd** |     **allEqual** |   **752.4 ns** | **14.90 ns** | **19.38 ns** |  **1.00** |    **0.00** |
-|             UsingAdd |     allEqual |   689.0 ns | 13.72 ns | 14.09 ns |  0.91 |    0.03 |
+| UsingContainsThenAdd |     allEqual |   775.7 ns | 15.49 ns | 29.48 ns |  1.00 |    0.00 |
+|             UsingAdd |     allEqual |   660.8 ns | 13.08 ns | 18.33 ns |  0.85 |    0.03 |

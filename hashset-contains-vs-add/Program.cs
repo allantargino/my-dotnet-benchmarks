@@ -3,7 +3,15 @@ using BenchmarkDotNet.Running;
 using Microsoft.Extensions.Logging;
 using System.Runtime.CompilerServices;
 
-namespace hashset_contains_vs_add;
+namespace Benchmarking;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        var summary = BenchmarkRunner.Run<HashsetBenchmark>();
+    }
+}
 
 public class HashsetBenchmark
 {
@@ -25,7 +33,7 @@ public class HashsetBenchmark
     {
         var allEqual = Enumerable.Repeat(new EventId(47), 100).ToList();
         yield return new EventTest(allEqual);
-        
+
         var _10percEqual = Enumerable.Range(0, 90).Select(i => new EventId(i)).Union(Enumerable.Repeat(new EventId(47), 10)).ToList();
         yield return new EventTest(_10percEqual);
 
@@ -64,18 +72,10 @@ public class HashsetBenchmark
 
         foreach (var _event in eventTest.Events)
         {
-            if (hashset.Add(_event.Id))
+            if (!hashset.Add(_event.Id))
             {
                 // do something
             }
         }
-    }
-}
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        var summary = BenchmarkRunner.Run<HashsetBenchmark>();
     }
 }
