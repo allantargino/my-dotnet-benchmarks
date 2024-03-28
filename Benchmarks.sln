@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "hashset-contains-vs-add", "hashset-contains-vs-add\hashset-contains-vs-add.csproj", "{4CFD6332-CD7E-4D67-A35E-0A571A136F70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "case-sensitive-params", "case-sensitive-params\case-sensitive-params.csproj", "{2AC9D253-F605-41BF-835E-0AF4A4B44C42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "case-sensitive-params", "case-sensitive-params\case-sensitive-params.csproj", "{2AC9D253-F605-41BF-835E-0AF4A4B44C42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "roslyn-manual-tree-transversal-context-actions", "roslyn-manual-tree-transversal-context-actions\roslyn-manual-tree-transversal-context-actions.csproj", "{F8F75F27-AC9E-43B7-BDE2-E02971F37542}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{2AC9D253-F605-41BF-835E-0AF4A4B44C42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AC9D253-F605-41BF-835E-0AF4A4B44C42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AC9D253-F605-41BF-835E-0AF4A4B44C42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8F75F27-AC9E-43B7-BDE2-E02971F37542}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8F75F27-AC9E-43B7-BDE2-E02971F37542}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8F75F27-AC9E-43B7-BDE2-E02971F37542}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8F75F27-AC9E-43B7-BDE2-E02971F37542}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
