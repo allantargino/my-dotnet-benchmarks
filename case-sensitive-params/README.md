@@ -1,7 +1,8 @@
 ﻿# Case Sensitive Parameters
 
-Work related to the issue [[LSG] LoggerMessage - Add diagnostic - Can't have the same template with different casing](https://github.com/dotnet/runtime/issues/52228),
-so here I compare different algorithms (essencially LINQ vs manual grouping). The conclusion is that, while I can perform better by using the manual approach,
+> Work related to the issue [[LSG] LoggerMessage - Add diagnostic - Can't have the same template with different casing](https://github.com/dotnet/runtime/issues/52228).
+> 
+Here I compare different algorithms (essencially LINQ vs manual grouping). The conclusion is that, while I can perform better by using the manual approach,
 LINQ syntax is way cleaner. Giving this is going to run in compile time, I'd say 100ns-200ns is worth losing in favor of readable code.
 
 ```ini
