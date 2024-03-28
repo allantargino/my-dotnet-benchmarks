@@ -3,6 +3,8 @@
 I was trying to decide if I should refactor [LoggerMessageGenerator.Parser.cs](https://github.com/dotnet/runtime/pull/80460/files)
 to use `HashSet.Add` only instead of `HashSet.Contains`+`HashSet.Add`. This benchmark proved that using only `HashSet.Add` was more efficient.
 
+> [Here's the PR change done at the dotnet/runtime repo](https://github.com/dotnet/runtime/pull/80460/files#diff-0a0edfbf348cc08e79a01ff6b0f9023793c86880d2cc9cbbb88c98bb7eb14575L256-L263).
+
 ```ini
 BenchmarkDotNet=v0.13.3, OS=Windows 11 (10.0.22623.1095)
 Intel Core i7-8665U CPU 1.90GHz (Coffee Lake), 1 CPU, 8 logical and 4 physical cores
