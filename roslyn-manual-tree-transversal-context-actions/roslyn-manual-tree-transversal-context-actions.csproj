@@ -8,29 +8,23 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Cases\Large.cs" />
-    <Compile Remove="Cases\Medium.cs" />
-    <Compile Remove="Cases\Short.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Cases\Large.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Cases\Medium.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Cases\Short.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+    <Compile Remove="Cases\*.cs" />
+		<None Include="Cases\*.cs">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.13.12" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.DurableTask" Version="2.13.1" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.9.2" />
 		<PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.21.0" />
 		<PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.DurableTask" Version="1.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\refs\azure-functions-durable-extension\src\WebJobs.Extensions.DurableTask.Analyzers\WebJobs.Extensions.DurableTask.Analyzers.csproj" />
   </ItemGroup>
 
 </Project>

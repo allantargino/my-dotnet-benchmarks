@@ -1,0 +1,3 @@
+[submodule "refs/azure-functions-durable-extension"]
+	path = refs/azure-functions-durable-extension
+	url = git@github.com:Azure/azure-functions-durable-extension.git
